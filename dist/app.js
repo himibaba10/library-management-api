@@ -24,9 +24,4 @@ app.get("/", (_req, res) => {
 app.use("*", notFoundHandler_1.default);
 // Global error handler
 app.use(globalErrorHandler_1.default);
-(0, server_1.default)(app).catch((err) => {
-    console.log("Failed to start server");
-    console.error(err);
-    console.error(err.message);
-    process.exit(1);
-});
+(0, server_1.default)(app);

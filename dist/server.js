@@ -15,10 +15,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const http_1 = __importDefault(require("http"));
 const db_1 = __importDefault(require("./app/db"));
 const startServer = (app) => __awaiter(void 0, void 0, void 0, function* () {
-    yield (0, db_1.default)();
-    const server = http_1.default.createServer(app);
-    server.listen(process.env.PORT, () => {
-        console.log(`Example app listening on port ${process.env.PORT}`);
-    });
+    try {
+        yield (0, db_1.default)();
+        const server = http_1.default.createServer(app);
+        server.listen(process.env.PORT, () => {
+            console.log(`Example app listening on port ${process.env.PORT}`);
+        });
+    }
+    catch (err) {
+        console.log("Failed to start server");
+        console.error(err);
+        console.error(err.message);
+        process.exit(1);
+    }
 });
 exports.default = startServer;

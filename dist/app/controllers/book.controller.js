@@ -108,7 +108,7 @@ exports.updateBook = updateBook;
 const deleteBook = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { bookId } = req.params;
-        const deleted = yield book_model_1.default.findByIdAndDelete(bookId);
+        yield book_model_1.default.findByIdAndDelete(bookId);
         res.status(200).json({
             success: true,
             message: "Book deleted successfully",
