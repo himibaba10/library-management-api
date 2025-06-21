@@ -124,7 +124,7 @@ export const deleteBook = async (
 ) => {
   try {
     const { bookId } = req.params;
-    const deleted = await Book.findByIdAndDelete(bookId);
+    await Book.findByIdAndDelete(bookId);
 
     res.status(200).json({
       success: true,
