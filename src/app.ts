@@ -27,9 +27,4 @@ app.use("*", notFoundHandler);
 // Global error handler
 app.use(globalErrorHandler);
 
-startServer(app).catch((err) => {
-  console.log("Failed to start server");
-  console.error(err);
-  console.error(err.message);
-  process.exit(1);
-});
+startServer(app);
