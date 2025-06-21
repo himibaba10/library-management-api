@@ -64,7 +64,7 @@ bookSchema.methods.updateAvailability = function (quantity: number) {
 // Middlware
 bookSchema.pre(
   ["findOne", "findOneAndUpdate", "findOneAndDelete"],
-  async function (this, next) {
+  async function (next) {
     const id = this.getQuery()._id;
 
     if (!id || !isValidObjectId(id)) {
