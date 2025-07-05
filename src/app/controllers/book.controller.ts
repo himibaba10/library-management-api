@@ -102,10 +102,14 @@ export const updateBook = async (
 ) => {
   try {
     const { bookId } = req.params;
-    const updated = await Book.findByIdAndUpdate(bookId, req.body, {
-      new: true,
-      runValidators: true,
-    });
+    const updated = await Book.findByIdAndUpdate(
+      bookId,
+      { ...req.body, available: req.body.copies > 0 ? true : false },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
 
     res.status(200).json({
       success: true,
